@@ -43,6 +43,7 @@ angular.module('pouchdb')
         indexes[id] = undefined;
 
         console.log('removed: ', id);
+        return index;
       }
 
       function updateChild (index, item) {
@@ -80,8 +81,7 @@ angular.module('pouchdb')
             }
           });
         } else { //DELETE
-          removeChild(change.id);
-          updateIndexes(indexes[change.id]);
+          updateIndexes(removeChild(change.id));
         }
       }});
 
